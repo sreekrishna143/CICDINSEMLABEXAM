@@ -1,0 +1,24 @@
+# Node
+**/node_modules/
+hospital-frontend-main/node_modules/
+
+# Maven / Java
+/hospital-backend-main/target/
+/target/
+.mvn/
+
+# Logs
+.log
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+
+# Environment
+.env
+env.local
+.env.local
