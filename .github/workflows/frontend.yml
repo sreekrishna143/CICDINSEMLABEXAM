@@ -1,0 +1,38 @@
+name: Frontend CI
+
+on:
+  push:
+    paths:
+      - 'hospital-frontend-main/**'
+  pull_request:
+    paths:
+      - 'hospital-frontend-main/**'
+
+jobs:
+  build:
+    name: Build Frontend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        working-directory: hospital-frontend-main
+        run: |
+          npm ci
+
+      - name: Lint (if configured)
+        working-directory: hospital-frontend-main
+        run: |
+          if npm run | grep -q "lint"; then npm run lint || true; fi
+
+      - name: Build
+        working-directory: hospital-frontend-main
+        run: |
+          npm run build
