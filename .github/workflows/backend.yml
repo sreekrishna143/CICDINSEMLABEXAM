@@ -7,6 +7,8 @@ on:
   pull_request:
     paths:
       - 'hospital-backend-main/**'
+  # Allow manual runs from the Actions UI so you can re-run after fixing workflow files
+  workflow_dispatch: {}
 
 jobs:
   build:
